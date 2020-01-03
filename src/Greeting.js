@@ -13,7 +13,8 @@ class Greeting extends Component {
       <h1>Ihan hyvä äppi se varmaan on</h1>
       <button onClick={this.callApi}>Hae characterin tiedot</button>
       <div>{this.state.isLoading && 'Haetaan...'}</div>
-      <div>{this.state.character}</div>
+      <div>Name: {this.state.character && this.state.character.name}</div>
+      <div>Level: {this.state.character && this.state.character.level}</div>
     </div>
   }
 
