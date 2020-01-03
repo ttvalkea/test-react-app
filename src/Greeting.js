@@ -9,12 +9,16 @@ class Greeting extends Component {
     };
   }
   render() {
+
+
     return <div>
       <h1>Ihan hyvä äppi se varmaan on</h1>
       <button onClick={this.callApi}>Hae characterin tiedot</button>
       <div>{this.state.isLoading && 'Haetaan...'}</div>
       <div>Name: {this.state.character && this.state.character.name}</div>
       <div>Level: {this.state.character && this.state.character.level}</div>
+      <div>Gear:</div>
+      <div>{this.state.character && this.state.character.gear.map(item => `Name: ${item.name}, Damage: ${item.damage}, Defence ${item.defence} |`)}</div>
     </div>
   }
 
@@ -23,6 +27,7 @@ class Greeting extends Component {
     fetch('http://tuomas-test.azurewebsites.net/character')
     .then(response => response.json())
     .then(data => {
+      console.log(data)
       this.setState({character: data});
       this.setState({isLoading: false});
     })
@@ -32,4 +37,5 @@ class Greeting extends Component {
     })
   }
 }
+
 export default Greeting;
